@@ -1,7 +1,7 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
 import * as moment from 'moment'
-import { Form, Button, FormControl, InputGroup} from 'react-bootstrap'
+import { Form, Button, InputGroup} from 'react-bootstrap'
 import Time from './Time';
 import Settings from './Settings';
 
@@ -80,6 +80,7 @@ class Home extends React.Component {
     }
 
     componentWillMount() {
+        console.log(this.props);
         if (!this.props.email) {
             this.props.history.replace('/login')
         }
@@ -93,39 +94,54 @@ class Home extends React.Component {
                 </h4>
                 <div className="content">
                     <div className="row">
-                        Set United States Time: 
-                        <Form>
-                            <InputGroup className="text-centre">
-                                <FormControl
-                                onChange={this.handleTimeChange}
-                                placeholder="hh:mm:ss"
-                                aria-label="hh:mm:ss"
-                                aria-describedby="basic-addon2"
-                                />
-                                <InputGroup.Append>
-                                <Button onClick={this.handleTimeSubmit} variant="outline-secondary">Submit</Button>
-                                </InputGroup.Append>
-                            </InputGroup>
-                        </Form>
+                        <div className="col-lg-12">
+                            <h4 className="subtitle">Clock</h4>
+                        </div>
+                        <div className="col-lg-12 mb-5">
+                            <Form>
+                                <Form.Group controlId="formBasicEmail">
+                                    <Form.Label>Set United States time:</Form.Label>
+                                    <InputGroup>
+                                        <Form.Control onChange={this.handleTimeChange} type="text" placeholder={this.defaultTimeFormat} />
+                                        <InputGroup.Append>
+                                            <Button onClick={this.handleTimeSubmit} variant="outline-secondary">Submit</Button>
+                                        </InputGroup.Append>
+                                    </InputGroup>
+                                </Form.Group>
+                                
+                            </Form>
+                        </div>
                     </div>
                     <div className="row custom">
-                        <div className="col-md-12 col-lg-4">
+                        <div className="col-md-12 col-lg-4 mgb-5">
                             <Time isLargeText={true} country={'United States'} time={this.getTimeWith(0)}/>
                         </div>
-                        <div className="col-md-6 col-lg-4">
-                            <Time country={'London'} time={this.getTimeWith(this.londonOffset)}/>
-                        </div>
-                        <div className="col-md-6 col-lg-4">
-                            <Time country={'India'} time={this.getTimeWith(this.indianOffset)}/>
+                        <div className="row col-lg-8">
+                            <div className="col-sm-12 col-md-6">
+                                <Time country={'London'} time={this.getTimeWith(this.londonOffset)}/>
+                            </div>
+                            <div className="col-sm-12 col-md-6">
+                                <Time country={'India'} time={this.getTimeWith(this.indianOffset)}/>
+                            </div>
                         </div>
                     </div>
-                    <Settings country='London' changeOffset={this.changeOffsetForLondon} defaultOffset={defaultLondonOffset} offset={this.londonOffset}></Settings>
-                    <Settings country='India' changeOffset={this.changeOffsetForIndia} defaultOffset={defaultIndianOffset} offset={this.indianOffset}></Settings>
+                    <hr />
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <h4 className="subtitle">Settings</h4>
+                        </div>
+                        <div className="col-lg-6 col-md-12">
+                            <Settings country='London' changeOffset={this.changeOffsetForLondon} defaultOffset={defaultLondonOffset} offset={this.londonOffset}></Settings>
+                        </div>
+                        <div className="col-lg-6 col-md-12">
+                            <Settings country='India' changeOffset={this.changeOffsetForIndia} defaultOffset={defaultIndianOffset} offset={this.indianOffset}></Settings>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
-    }
 
+    }
 }
 
 export default withRouter(Home)

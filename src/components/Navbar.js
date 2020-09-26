@@ -14,13 +14,13 @@ class NavbarComponent extends React.Component {
     render() {
         return (
             <Navbar sticky="top" bg="light" expand="lg">
-                <Link to="/" className="navbar-brand">World Clock</Link>
+                <Navbar.Brand>World Clock</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
+                <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+                    <Nav>
                         {
                             this.props.isLoggedIn &&
-                            <Link className="nav-link" onClick={this.logout}>Logout</Link>
+                            <Link to="/login" className="nav-link" onClick={this.logout}>Logout</Link>
                         }
                     </Nav>
                 </Navbar.Collapse>

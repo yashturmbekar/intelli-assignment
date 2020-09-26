@@ -25,7 +25,7 @@ export default class Settings extends React.Component {
     render() {
         return (
             <Form>
-                {this.props.country} (Default: {this.props.defaultOffset}) :
+                <b>{this.props.country}</b> (Default: {this.props.defaultOffset}) :
                 <InputGroup className="text-centre">
                     <FormControl
                     placeholder="hh"

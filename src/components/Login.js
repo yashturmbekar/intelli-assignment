@@ -37,7 +37,7 @@ class Login extends React.Component {
         return (
             <div className="row">
                 <div className="col-md-6 offset-md-3">
-                    <h3 className="text-center">Login to the World Clock</h3>
+                    <h3 className="text-center pd-1">Login to the World Clock</h3>
                     <Form>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>

@@ -2,10 +2,29 @@ section {
   margin-top: 3rem;
 }
 
+h3.pd-1 {
+  padding: 1em;
+}
+
+.custom {
+  text-align: center;
+}
+
+.mgb-5 {
+  margin-bottom: 3rem !important;
+}
 
 @media only screen and (max-width: 768px) {
   section {
     margin-top: 1rem !important;
+  }
+  .custom {
+    text-align: right;
+    float: right;
+    display: block;
+  }
+  .mgb-5 {
+    margin-bottom: 1rem !important;
   }
 }
 
@@ -13,39 +32,31 @@ section {
   section {
     margin-top: 2rem !important;
   }
-}
-
-h3 {
-  padding: 1em;
+  .custom {
+    text-align: center;
+    float: none;
+    display: block;
+  }
 }
 
 .title {
   margin-bottom: 2rem;
 }
 
+.subtitle {
+  margin-bottom: 1rem;
+}
+
 .content {
   margin: 1rem;
-  padding: 1rem;
+  padding: 2rem;
   width: 100%;
   background-color: #F8F8F8;
+  border: 1px solid #eee;
 }
 
-.custom {
-  text-align: center;
-}
-
-@media only screen and (max-width: 768px) {
-  .custom {
-    text-align: right;
-    float: right;
-    display: block;
-  }
-}
-
-@media only screen and (max-width: 992px) {
-  .custom {
-    text-align: center;
-    float: none;
-    display: block;
-  }
+hr {
+  border-top: 1px solid #bbb;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
