@@ -1,7 +1,51 @@
 section {
-    margin-top: 5rem;
+  margin-top: 3rem;
+}
+
+
+@media only screen and (max-width: 768px) {
+  section {
+    margin-top: 1rem !important;
   }
-  
-  h3 {
-    padding: 1em;
+}
+
+@media only screen and (max-width: 992px) {
+  section {
+    margin-top: 2rem !important;
   }
+}
+
+h3 {
+  padding: 1em;
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.content {
+  margin: 1rem;
+  padding: 1rem;
+  width: 100%;
+  background-color: #F8F8F8;
+}
+
+.custom {
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .custom {
+    text-align: right;
+    float: right;
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .custom {
+    text-align: center;
+    float: none;
+    display: block;
+  }
+}

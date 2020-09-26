@@ -30,7 +30,7 @@ export default class App extends React.Component {
             <BrowserRouter>
                 <NavbarComponent isLoggedIn={this.state.isLoggedIn} logout={this.logout}/>
                     <section className="container">
-                        <Route exact path="/" component={Home}/>
+                        <Route exact path="/" component={() => <Home email={this.state.email} />}/>
                         <Route exact path="/login" component={() => <Login login={this.login} />} />
                     </section>
             </BrowserRouter>
