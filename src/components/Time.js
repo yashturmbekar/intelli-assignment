@@ -1,7 +1,4 @@
 import React from 'react'
-import {Form, Button, InputGroup, FormControl} from 'react-bootstrap'
-import {withRouter} from 'react-router-dom'
-
 
 export default class Time extends React.Component {
     render() {

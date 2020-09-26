@@ -9,11 +9,11 @@ import Settings from './Settings';
 class Home extends React.Component {
     constructor() {
         super()
-        this.state = {
-            time: moment().utcOffset(-7).format('hh:mm:ss')
-        }
-        this.defaultTimeout = 1;
+        this.defaultTimeout = 5;
         this.defaultTimeFormat = 'HH:mm:ss';
+        this.state = {
+            time: moment().utcOffset(-7).format(this.defaultTimeFormat)
+        }
         this.handleTimeChange = this.handleTimeChange.bind(this)
         this.handleTimeSubmit = this.handleTimeSubmit.bind(this)
         this.updateTime = this.updateTime.bind(this)
