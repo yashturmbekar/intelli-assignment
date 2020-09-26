@@ -5,11 +5,13 @@ import { Form, Button, FormControl, InputGroup} from 'react-bootstrap'
 import Time from './Time';
 import Settings from './Settings';
 
+const defaultLondonOffset = 8;
+const defaultIndianOffset = 12.5
 
 class Home extends React.Component {
     constructor() {
         super()
-        this.defaultTimeout = 5;
+        this.defaultTimeout = 1;
         this.defaultTimeFormat = 'HH:mm:ss';
         this.state = {
             time: moment().utcOffset(-7).format(this.defaultTimeFormat)
@@ -22,8 +24,8 @@ class Home extends React.Component {
         this.changeOffsetForLondon = this.changeOffsetForLondon.bind(this)
         this.setTime = this.setTime.bind(this)
         this.timeout = setInterval(this.updateTime, this.defaultTimeout * 1000)
-        this.londonOffset = 8;
-        this.indianOffset = 12.5;
+        this.londonOffset = defaultLondonOffset;
+        this.indianOffset = defaultIndianOffset;
     }
 
     updateTime() {
@@ -57,7 +59,6 @@ class Home extends React.Component {
     }
 
     changeOffsetForIndia(offset) {
-        console.log('Logging India')
         if (offset > -24 && offset < 24) {
             this.indianOffset = offset
         }
@@ -118,8 +119,8 @@ class Home extends React.Component {
                             <Time country={'India'} time={this.getTimeWith(this.indianOffset)}/>
                         </div>
                     </div>
-                    <Settings country='London' changeOffset={this.changeOffsetForLondon} offset={this.londonOffset}></Settings>
-                    <Settings country='India' changeOffset={this.changeOffsetForIndia} offset={this.indianOffset}></Settings>
+                    <Settings country='London' changeOffset={this.changeOffsetForLondon} defaultOffset={defaultLondonOffset} offset={this.londonOffset}></Settings>
+                    <Settings country='India' changeOffset={this.changeOffsetForIndia} defaultOffset={defaultIndianOffset} offset={this.indianOffset}></Settings>
                 </div>
             </div>
         )

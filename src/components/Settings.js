@@ -6,22 +6,34 @@ export default class Settings extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentOffset: this.props.offset
+            offset: this.props.offset
         }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleChange(e) {
+        this.setState({
+            offset: e.target.value
+        })
+    }
+
+    handleSubmit() {
+        this.props.changeOffset(this.state.offset)
     }
     
     render() {
         return (
             <Form>
-                {this.props.country} :
+                {this.props.country} (Default: {this.props.defaultOffset}) :
                 <InputGroup className="text-centre">
                     <FormControl
                     placeholder="hh"
-                    value={this.state.currentOffset}
-                    onChange={(e) => {this.setState({offset: e.target.value })}}
+                    value={this.state.offset}
+                    onChange={this.handleChange}
                     />
                     <InputGroup.Append>
-                    <Button onClick={this.props.changeOffset(this.state.offset)} variant="outline-secondary">Submit</Button>
+                    <Button onClick={this.handleSubmit} variant="outline-secondary">Submit</Button>
                     </InputGroup.Append>
                 </InputGroup>
             </Form>
