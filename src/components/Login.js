@@ -6,13 +6,14 @@ class Login extends React.Component {
     constructor() {
         super();
         this.state = {
-            email: '123@gmail.com',
-            password: '1234',
+            email: '',
+            password: '',
             isLoggedIn: false
         }
         this.handleEmailChange = this.handleEmailChange.bind(this)
         this.handlePasswordChange = this.handlePasswordChange.bind(this)
         this.handleOnSubmit = this.handleOnSubmit.bind(this)
+        this.clearForm = this.clearForm.bind(this)
     }
 
     handleEmailChange(e) {
@@ -23,6 +24,12 @@ class Login extends React.Component {
     handlePasswordChange(e) {
         this.setState({
             password: e.target.value
+        })
+    }
+    clearForm() {
+        this.setState({
+            email: '',
+            password: ''
         })
     }
     
@@ -46,17 +53,32 @@ class Login extends React.Component {
                             <Form.Control.Feedback type="invalid">Please enter password</Form.Control.Feedback>
                             <Form.Control required value={this.state.password} onChange={this.handlePasswordChange} type="password" placeholder="Password" />
                         </Form.Group>
-                        <Button onClick={this.handleOnSubmit} variant="primary" type="submit">
-                            Submit
-                        </Button>
+                        <div>
+                            <Button onClick={this.handleOnSubmit} variant="primary" type="submit">
+                                Submit
+                            </Button>
+                            <Button onClick={this.clearForm} className="float-right" variant="light">
+                            Reset
+                            </Button>
+                        </div>
                     </Form>
                 </div>
             </div>
         )
     }
 
+    validateEmail(email) {
+        return true
+    }
+
+    validatePassword(password) {
+        return true
+    }
+
     async handleOnSubmit(e) {
         e.preventDefault();
+        if (!this.validateEmail(this.state.email)) return
+        if (!this.validatePassword(this.state.password)) return
         const state = {
             isLoggedIn: true,
             email: this.state.email,
