@@ -11,7 +11,7 @@ const defaultIndianOffset = 12.5
 class Home extends React.Component {
     constructor() {
         super()
-        this.defaultTimeout = 1;
+        this.defaultTimeout = 5;
         this.defaultTimeFormat = 'HH:mm:ss';
         this.state = {
             time: moment().utcOffset(-7).format(this.defaultTimeFormat)
